@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Steam Inventory Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">S</span><span>INVENTORY<span class="brand-muted"> TRACKER</span></span></a>
+    <span class="live"><i></i> STEAM COMMUNITY</span>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">TWÓJ EKWIPUNEK W JEDNYM MIEJSCU</div>
+      <h1>Wszystkie skiny.<br><span>Jedna wartość.</span></h1>
+      <p class="intro">Podłącz publiczny profil Steam, przeglądaj przedmioty z różnych gier i sprawdzaj ich ceny na Rynku Społeczności.</p>
+      <form id="profileForm" class="profile-form">
+        <div class="field-wrap"><label for="steamId">STEAMID64</label><input id="steamId" placeholder="Np. 76561198000000000" inputmode="numeric" required></div>
+        <button type="submit" id="loadBtn">Wczytaj ekwipunek <span>↗</span></button>
+      </form>
+      <div class="hint">Profil i ekwipunek muszą być publiczne. <a href="https://steamid.io/" target="_blank" rel="noreferrer">Znajdź swój SteamID64 ↗</a></div>
+      <div id="status" class="status" role="status"></div>
+    </section>
+    <section id="dashboard" class="dashboard hidden">
+      <div class="stats">
+        <article class="stat"><span>ŁĄCZNA WARTOŚĆ WYCENIONYCH</span><strong id="totalValue">—</strong><small>PLN · ceny Rynku Społeczności</small></article>
+        <article class="stat"><span>PRZEDMIOTY</span><strong id="itemCount">0</strong><small>we wszystkich wczytanych grach</small></article>
+        <article class="stat"><span>GRY W BIBLIOTECE</span><strong id="gameCount">0</strong><small>zarejestrowane na profilu</small></article>
+      </div>
+      <div class="toolbar">
+        <div><div class="eyebrow">KOLEKCJA</div><h2>Twój ekwipunek</h2></div>
+        <div class="controls">
+          <select id="gameFilter"><option value="all">Wszystkie gry</option></select>
+          <select id="sort"><option value="value-desc">Cena: od najwyższej</option><option value="value-asc">Cena: od najniższej</option><option value="name">Nazwa A–Z</option></select>
+          <input id="search" placeholder="Szukaj przedmiotu…">
+        </div>
+      </div>
+      <div id="gameProgress" class="game-progress"></div>
+      <div id="items" class="item-grid"></div>
+      <div id="empty" class="empty hidden">Nie znaleziono przedmiotów dla wybranych filtrów.</div>
+      <p class="footnote">Ceny pochodzą z publicznego Steam Community Market i mogą być niedostępne dla przedmiotów nierynkowych. Wycena nie obejmuje opłat ani wartości poza Steam.</p>
+    </section>
+  </main>
+  <footer>STEAM INVENTORY TRACKER <span>Nieoficjalna aplikacja · Steam i znaki towarowe należą do Valve</span></footer>
+  <script src="/app.js"></script>
+</body></html>
